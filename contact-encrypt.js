@@ -5,7 +5,7 @@
 // Contact data stored as Base64 (obfuscated)
 const ENCRYPTED_CONTACT = {
     email: 'eGVyb2hvdXJAZ21haWwuY29t', // xerohour@gmail.com (Base64)
-    phone: 'NTAyLTI1MS0xMzM3' // 502-251-1337 (Base64)
+    phone: 'MS01MDItMjUxLTEzMzc=' // 1-502-251-1337 (Base64)
 };
 
 // Base64 decode helper
@@ -36,30 +36,35 @@ function renderContactCards() {
         const phone = decryptBase64(ENCRYPTED_CONTACT.phone);
         const phoneContainer = phoneCard.querySelector('.contact-data');
         if (phoneContainer) {
-            // Obfuscate phone with matrix symbols
-            const digits = phone.split('');
-            phoneContainer.innerHTML = digits.map((d, i) => {
-                if (d === '-') {
+            // Render phone with some digits obscured (but all visible in source)
+            const parts = phone.split('');
+            phoneContainer.innerHTML = parts.map((char, i) => {
+                if (char === '-') {
                     return `<span class="contact-separator">-</span>`;
                 }
-                // Randomly show some digits as matrix symbols
-                const showAsSymbol = Math.random() > 0.7;
-                if (showAsSymbol) {
-                    return `<span class="contact-symbol" data-real="${d}">●</span>`;
+                // Only obscure specific digits (positions 5 and 11 - the "2" and "3")
+                const shouldObscure = (i === 5 || i === 11);
+                if (shouldObscure) {
+                    return `<span class="contact-symbol" data-real="${char}" tabindex="0">●</span>`;
                 }
-                return `<span class="char" style="animation-delay: ${i * 0.05}s">${d}</span>`;
+                return `<span class="char" style="animation-delay: ${i * 0.05}s">${char}</span>`;
             }).join('');
             
-            // Add hover effect to reveal hidden digits
+            // Add hover/focus effect to reveal hidden digits
             phoneContainer.querySelectorAll('.contact-symbol[data-real]').forEach(symbol => {
-                symbol.addEventListener('mouseenter', function() {
+                const reveal = function() {
                     this.textContent = this.getAttribute('data-real');
                     this.classList.add('revealed');
-                });
-                symbol.addEventListener('mouseleave', function() {
+                };
+                const hide = function() {
                     this.textContent = '●';
                     this.classList.remove('revealed');
-                });
+                };
+                
+                symbol.addEventListener('mouseenter', reveal);
+                symbol.addEventListener('mouseleave', hide);
+                symbol.addEventListener('focus', reveal);
+                symbol.addEventListener('blur', hide);
             });
         }
     }
