@@ -21,7 +21,7 @@
 
 <div align="center">
 
-![Matrix Digital Rain](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbmRxeGx4OGx4OGx4OGx4OGx4OGx4OGx4OGx4OGx4OGx4OGx4OCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/13Coqz7Zy4fU9W/giphy.gif)
+![Matrix Digital Rain](https://64.media.tumblr.com/a6ea37b453b73d2559e354cea4b7c50a/tumblr_pbnwbc2iYP1uauof6o1_500.gifv)
 
 *There is no spoon.* 🥄
 
@@ -259,10 +259,10 @@ Copyright (c) 2026 xerohour
 
 ### 🐇 The choice is yours...
 
-**Blue Pill** - Stay in ignorance, close this page  
+**Blue Pill** - Stay in ignorance, close this page
 **Red Pill** - [Enter the Matrix](https://xerohour.github.io)
 
-![Matrix Code](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbmRxeGx4OGx4OGx4OGx4OGx4OGx4OGx4OGx4OGx4OGx4OGx4OCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/LpDLx3i0pXl0Q/giphy.gif)
+![Matrix Code](https://64.media.tumblr.com/a6ea37b453b73d2559e354cea4b7c50a/tumblr_pbnwbc2iYP1uauof6o1_500.gifv)
 
 **There is no spoon.** 🥄
 
