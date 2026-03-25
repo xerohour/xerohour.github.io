@@ -1,2 +1,25 @@
-title: xerohour's homepage
-description: Personal website hosted on GitHub Pages
+title: xerohour | System Operator
+description: AI/ML Developer | Genome Analysis | Autonomous Agents | Matrix-themed portfolio
+url: https://xerohour.github.io
+baseurl: ""
+github_username: xerohour
+repository: xerohour/xerohour.github.io
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+
+# Theme customization
+theme_minimal:
+  logo: "/assets/logo.svg"
+  social_links:
+    - { platform: github, user_url: "https://github.com/xerohour" }
+
+# SEO
+seo:
+  description: "AI/ML Developer specializing in genome analysis, autonomous agents, and neural interfaces. Matrix-themed portfolio with encrypted contact info."
+  keywords: "AI, Machine Learning, Genome Analysis, Bioinformatics, Python, JavaScript, TensorFlow, Neural Networks, Autonomous Agents"
+  author: "xerohour"
+
+# Google Analytics (optional - add your ID)
+# google_analytics: UA-XXXXXXXXX-X
