@@ -13,60 +13,51 @@ function decryptBase64(str) {
     return atob(str);
 }
 
+// Store decrypted values for copy functionality
+let decryptedEmail = '';
+let decryptedPhone = '';
+
 // Render contact cards with decrypted data
 function renderContactCards() {
     const emailCard = document.querySelector('.contact-card[data-type="email"]');
     const phoneCard = document.querySelector('.contact-card[data-type="phone"]');
     
     if (emailCard) {
-        const email = decryptBase64(ENCRYPTED_CONTACT.email);
+        decryptedEmail = decryptBase64(ENCRYPTED_CONTACT.email);
         const emailContainer = emailCard.querySelector('.contact-data');
         if (emailContainer) {
             // Split email into parts for obfuscation
-            const [user, domain] = email.split('@');
+            const [user, domain] = decryptedEmail.split('@');
             emailContainer.innerHTML = `
                 <span class="contact-part">${user.split('').map(c => `<span class="char" style="animation-delay: ${Math.random() * 0.5}s">${c}</span>`).join('')}</span>
                 <span class="contact-symbol">@</span>
                 <span class="contact-part">${domain.split('').map(c => `<span class="char" style="animation-delay: ${Math.random() * 0.5}s">${c}</span>`).join('')}</span>
             `;
         }
+        // Store decrypted value on element for copy
+        emailCard.dataset.decrypted = decryptedEmail;
     }
     
     if (phoneCard) {
-        const phone = decryptBase64(ENCRYPTED_CONTACT.phone);
+        decryptedPhone = decryptBase64(ENCRYPTED_CONTACT.phone);
         const phoneContainer = phoneCard.querySelector('.contact-data');
         if (phoneContainer) {
-            // Render phone with some digits obscured (but all visible in source)
-            const parts = phone.split('');
+            // Render phone with visual obfuscation (● symbols) but real data in data attribute
+            const parts = decryptedPhone.split('');
             phoneContainer.innerHTML = parts.map((char, i) => {
                 if (char === '-') {
                     return `<span class="contact-separator">-</span>`;
                 }
-                // Only obscure specific digits (positions 5 and 11 - the "2" and "3")
+                // Obscure some digits visually with ● but store real value
                 const shouldObscure = (i === 5 || i === 11);
                 if (shouldObscure) {
-                    return `<span class="contact-symbol" data-real="${char}" tabindex="0">●</span>`;
+                    return `<span class="contact-symbol" data-char="${char}">●</span>`;
                 }
                 return `<span class="char" style="animation-delay: ${i * 0.05}s">${char}</span>`;
             }).join('');
-            
-            // Add hover/focus effect to reveal hidden digits
-            phoneContainer.querySelectorAll('.contact-symbol[data-real]').forEach(symbol => {
-                const reveal = function() {
-                    this.textContent = this.getAttribute('data-real');
-                    this.classList.add('revealed');
-                };
-                const hide = function() {
-                    this.textContent = '●';
-                    this.classList.remove('revealed');
-                };
-                
-                symbol.addEventListener('mouseenter', reveal);
-                symbol.addEventListener('mouseleave', hide);
-                symbol.addEventListener('focus', reveal);
-                symbol.addEventListener('blur', hide);
-            });
         }
+        // Store decrypted value on element for copy
+        phoneCard.dataset.decrypted = decryptedPhone;
     }
 }
 
@@ -138,13 +129,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // renderContactOnCanvas('contact-email-canvas', email, true);
     // renderContactOnCanvas('contact-phone-canvas', phone, false);
     
-    // Add copy-to-clipboard functionality
+    // Add copy-to-clipboard functionality (uses decrypted data, not displayed text)
     document.querySelectorAll('.contact-card').forEach(card => {
         card.addEventListener('dblclick', function() {
-            const dataElement = this.querySelector('.contact-data');
-            if (dataElement) {
-                const text = dataElement.textContent.replace(/\s/g, '');
-                navigator.clipboard.writeText(text).then(() => {
+            // Get decrypted value from data attribute (not from visible text)
+            const decryptedValue = this.dataset.decrypted;
+            if (decryptedValue) {
+                navigator.clipboard.writeText(decryptedValue).then(() => {
                     // Show copy confirmation
                     const badge = this.querySelector('.security-badge');
                     const originalText = badge.innerHTML;

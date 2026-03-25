@@ -890,13 +890,7 @@ body::after {
     color: var(--matrix-green-dim);
     font-weight: 700;
     margin: 0 1px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.contact-data .contact-symbol.revealed {
-    color: var(--matrix-green);
-    text-shadow: 0 0 10px var(--matrix-green);
+    /* No hover reveal - visual obfuscation only */
 }
 
 .contact-data .contact-separator {
