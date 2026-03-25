@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="80" viewBox="0 0 300 80">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#001a00;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00ff41;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#008f11;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="300" height="80" rx="4" fill="url(#bgGrad)" stroke="#00ff41" stroke-width="1"/>
+  
+  <!-- Phone Icon -->
+  <circle cx="40" cy="40" r="25" fill="url(#textGrad)" opacity="0.1"/>
+  <path d="M35 35 C35 35, 38 38, 40 40 C42 38, 45 35, 45 35 C44 33, 42 32, 40 33 C38 32, 36 33, 35 35 Z" fill="url(#textGrad)"/>
+  <path d="M33 48 C33 48, 36 51, 40 51 C44 51, 47 48, 47 48" stroke="url(#textGrad)" stroke-width="2" fill="none" stroke-linecap="round"/>
+  
+  <!-- Phone Text -->
+  <text x="75" y="35" font-family="Arial, sans-serif" font-size="10" fill="#008f11" font-weight="600">SECURE LINE</text>
+  <text x="75" y="58" font-family="Courier New, monospace" font-size="16" font-weight="700" fill="url(#textGrad)">502-251-1337</text>
+</svg>
