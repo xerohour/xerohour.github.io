@@ -779,6 +779,84 @@ body {
     font-size: 0.7rem;
     color: var(--matrix-green);
     letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.security-badge.copied {
+    background: rgba(0, 255, 65, 0.2);
+    border-color: #00ff41;
+    animation: badge-pulse 0.5s ease-in-out;
+}
+
+@keyframes badge-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.contact-hint {
+    margin-top: 0.75rem;
+    font-size: 0.7rem;
+    color: var(--matrix-green-dim);
+    letter-spacing: 0.5px;
+}
+
+.contact-data-container {
+    margin-top: 1rem;
+    min-height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-data {
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.contact-part {
+    display: inline-flex;
+}
+
+.contact-data .char {
+    display: inline-block;
+    color: var(--matrix-green);
+    font-weight: 700;
+    animation: char-glow 2s ease-in-out infinite;
+}
+
+@keyframes char-glow {
+    0%, 100% { 
+        text-shadow: 0 0 5px var(--matrix-green);
+        opacity: 1;
+    }
+    50% { 
+        text-shadow: 0 0 15px var(--matrix-green), 0 0 25px var(--matrix-green);
+        opacity: 0.8;
+    }
+}
+
+.contact-data .contact-symbol {
+    display: inline-block;
+    color: var(--matrix-green-dim);
+    font-weight: 700;
+    margin: 0 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.contact-data .contact-symbol.revealed {
+    color: var(--matrix-green);
+    text-shadow: 0 0 10px var(--matrix-green);
+}
+
+.contact-data .contact-separator {
+    display: inline-block;
+    color: var(--matrix-green);
+    font-weight: 700;
+    margin: 0 2px;
 }
 
 .contact-link {
