@@ -1,22 +1,16 @@
 /* ============================================
-   Neural Network Background Animation
+   MATRIX DIGITAL RAIN ANIMATION
    ============================================ */
 
-const canvas = document.getElementById('neural-network');
+const canvas = document.getElementById('matrix-rain');
 const ctx = canvas.getContext('2d');
 
 let width, height;
-let particles = [];
-let connections = [];
+let columns = [];
+let fontSize = 14;
 
-// Configuration
-const CONFIG = {
-    particleCount: 80,
-    connectionDistance: 150,
-    particleSpeed: 0.3,
-    particleSize: 2,
-    connectionOpacity: 0.15
-};
+// Matrix glyphs - Katakana + Latin + Numbers
+const matrixChars = 'ｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝ 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
 // Resize canvas
 function resize() {
@@ -24,93 +18,77 @@ function resize() {
     height = window.innerHeight;
     canvas.width = width;
     canvas.height = height;
+    
+    // Calculate columns
+    const columnCount = Math.floor(width / fontSize);
+    columns = Array(columnCount).fill(0);
 }
 
-// Particle class
-class Particle {
-    constructor() {
-        this.x = Math.random() * width;
-        this.y = Math.random() * height;
-        this.vx = (Math.random() - 0.5) * CONFIG.particleSpeed;
-        this.vy = (Math.random() - 0.5) * CONFIG.particleSpeed;
-        this.size = Math.random() * CONFIG.particleSize + 1;
-    }
-
-    update() {
-        this.x += this.vx;
-        this.y += this.vy;
-
-        // Bounce off edges
-        if (this.x < 0 || this.x > width) this.vx *= -1;
-        if (this.y < 0 || this.y > height) this.vy *= -1;
-    }
-
-    draw() {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fillStyle = '#00d9ff';
-        ctx.fill();
-    }
-}
-
-// Initialize particles
-function initParticles() {
-    particles = [];
-    for (let i = 0; i < CONFIG.particleCount; i++) {
-        particles.push(new Particle());
-    }
-}
-
-// Draw connections between nearby particles
-function drawConnections() {
-    for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-            const dx = particles[i].x - particles[j].x;
-            const dy = particles[i].y - particles[j].y;
-            const distance = Math.sqrt(dx * dx + dy * dy);
-
-            if (distance < CONFIG.connectionDistance) {
-                const opacity = (1 - distance / CONFIG.connectionDistance) * CONFIG.connectionOpacity;
-                ctx.beginPath();
-                ctx.moveTo(particles[i].x, particles[i].y);
-                ctx.lineTo(particles[j].x, particles[j].y);
-                ctx.strokeStyle = `rgba(0, 217, 255, ${opacity})`;
-                ctx.lineWidth = 1;
-                ctx.stroke();
-            }
+// Draw matrix rain
+function draw() {
+    // Fade effect (creates trails)
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+    ctx.fillRect(0, 0, width, height);
+    
+    // Set font style
+    ctx.fillStyle = '#00ff41';
+    ctx.font = `${fontSize}px 'JetBrains Mono', monospace`;
+    
+    // Draw each column
+    for (let i = 0; i < columns.length; i++) {
+        // Random character
+        const char = matrixChars[Math.floor(Math.random() * matrixChars.length)];
+        
+        // Draw character
+        ctx.fillText(char, i * fontSize, columns[i] * fontSize);
+        
+        // Reset column randomly after it goes off screen
+        if (columns[i] * fontSize > height && Math.random() > 0.975) {
+            columns[i] = 0;
         }
+        
+        // Move column down
+        columns[i]++;
     }
 }
 
 // Animation loop
 function animate() {
-    ctx.clearRect(0, 0, width, height);
-
-    // Update and draw particles
-    particles.forEach(particle => {
-        particle.update();
-        particle.draw();
-    });
-
-    // Draw connections
-    drawConnections();
-
+    draw();
     requestAnimationFrame(animate);
 }
 
 // Initialize
 resize();
-initParticles();
 animate();
 
 // Handle resize
 window.addEventListener('resize', () => {
     resize();
-    initParticles();
 });
 
 /* ============================================
-   GitHub Projects Fetcher
+   TYPEWRITER EFFECT
+   ============================================ */
+
+const typewriterText = "./load_construct.exe --ai-projects";
+const typewriterElement = document.getElementById('typewriter');
+let charIndex = 0;
+let typingSpeed = 50;
+
+function typeWriter() {
+    if (charIndex < typewriterText.length) {
+        typewriterElement.textContent += typewriterText.charAt(charIndex);
+        charIndex++;
+        setTimeout(typeWriter, typingSpeed);
+    }
+}
+
+// Start typewriter after page load
+setTimeout(typeWriter, 1000);
+
+/* ============================================
+   GITHUB PROJECTS FETCHER
    ============================================ */
 
 const projectsGrid = document.getElementById('projects-grid');
@@ -121,27 +99,27 @@ const AI_KEYWORDS = [
     'neural', 'network', 'deep learning', 'tensorflow',
     'pytorch', 'agent', 'llm', 'nlp', 'computer vision',
     'genome', 'bioinformatics', 'promethease', 'snp',
-    'automation', 'autonomous', 'chatbot', 'gpt'
+    'automation', 'autonomous', 'chatbot', 'gpt', 'matrix'
 ];
 
-// Featured projects (manually curated - update with your actual repos)
+// Featured projects (manually curated)
 const FEATURED_PROJECTS = [
     {
-        name: 'Promethease Offline',
-        description: 'Offline genome analysis reports with interactive UI for SNP data visualization and filtering.',
+        name: 'PROMETHEASE_OFFLINE',
+        description: 'Offline genome analysis reports with interactive UI for SNP data visualization.',
         language: 'HTML',
         topics: ['genome', 'bioinformatics', 'promethease', 'offline'],
         override: true
     },
     {
-        name: 'AI Agent System',
+        name: 'AI_AGENT_SYSTEM',
         description: 'Autonomous AI agents for task automation and intelligent decision-making.',
         language: 'Python',
         topics: ['ai', 'agents', 'automation', 'machine-learning'],
         override: true
     },
     {
-        name: 'Genome Analysis Tools',
+        name: 'GENOME_ANALYSIS',
         description: 'TensorFlow-IO utilities for FASTQ file processing and DNA sequence encoding.',
         language: 'Python',
         topics: ['genome', 'tensorflow', 'bioinformatics', 'dna'],
@@ -190,10 +168,10 @@ async function fetchGitHubRepos() {
 function renderProjects(projects) {
     projectsGrid.innerHTML = projects.map(project => {
         const isOverride = project.override || false;
-        const htmlUrl = isOverride ? `https://github.com/xerohour/${project.name.replace(/\s+/g, '-')}` : project.html_url;
-        const stars = isOverride ? '⭐' : project.stargazers_count;
-        const forks = isOverride ? '🍴' : project.forks_count;
-        const language = project.language || 'Code';
+        const htmlUrl = isOverride ? `https://github.com/xerohour/${project.name.replace(/\s+/g, '-').toLowerCase()}` : project.html_url;
+        const stars = isOverride ? '██' : project.stargazers_count;
+        const forks = isOverride ? '◈' : project.forks_count;
+        const language = project.language || 'CODE';
         const topics = project.topics || [];
 
         return `
@@ -202,7 +180,7 @@ function renderProjects(projects) {
                     <div class="project-card-body">
                         <h3 class="project-title">
                             <a href="${htmlUrl}" target="_blank">
-                                <i class="fab fa-github"></i> ${project.name}
+                                <i class="fas fa-file-code"></i> ${project.name}
                             </a>
                         </h3>
                         <p class="project-description">${project.description || 'No description available'}</p>
@@ -215,14 +193,14 @@ function renderProjects(projects) {
                                 <i class="fas fa-code-branch"></i> ${forks}
                             </span>
                             <span class="project-stat">
-                                <i class="fas fa-circle" style="color: ${getLanguageColor(project.language)}; font-size: 0.5rem;"></i> 
+                                <i class="fas fa-circle" style="color: ${getLanguageColor(project.language)}; font-size: 0.4rem;"></i> 
                                 ${language}
                             </span>
                         </div>
                         
                         ${topics.length > 0 ? `
                             <div class="project-tags">
-                                ${topics.slice(0, 4).map(tag => `<span class="tag">${tag}</span>`).join('')}
+                                ${topics.slice(0, 4).map(tag => `<span class="tag">${tag.toUpperCase()}</span>`).join('')}
                             </div>
                         ` : ''}
                     </div>
@@ -250,11 +228,11 @@ function getLanguageColor(language) {
         'Rust': '#dea584',
         'Java': '#b07219'
     };
-    return colors[language] || '#8b949e';
+    return colors[language] || '#00ff41';
 }
 
 /* ============================================
-   Scroll Animations
+   SCROLL ANIMATIONS
    ============================================ */
 
 function initScrollAnimations() {
@@ -275,7 +253,7 @@ function initScrollAnimations() {
 }
 
 /* ============================================
-   Smooth Scroll
+   SMOOTH SCROLL
    ============================================ */
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -291,21 +269,73 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+// Scroll to top function
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
+
 /* ============================================
-   Initialize
+   NAVBAR SCROLL EFFECT
+   ============================================ */
+
+window.addEventListener('scroll', () => {
+    const navbar = document.querySelector('.navbar');
+    if (window.scrollY > 50) {
+        navbar.style.background = 'rgba(0, 0, 0, 0.98)';
+        navbar.style.boxShadow = '0 2px 20px rgba(0, 255, 65, 0.2)';
+    } else {
+        navbar.style.background = 'rgba(0, 0, 0, 0.95)';
+        navbar.style.boxShadow = 'none';
+    }
+});
+
+/* ============================================
+   GLITCH TEXT EFFECT
+   ============================================ */
+
+function randomGlitch() {
+    const glitchTexts = document.querySelectorAll('.glitch');
+    glitchTexts.forEach(text => {
+        const original = text.getAttribute('data-text');
+        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&';
+        let iterations = 0;
+        
+        const interval = setInterval(() => {
+            text.textContent = original
+                .split('')
+                .map((letter, index) => {
+                    if (index < iterations) {
+                        return original[index];
+                    }
+                    return chars[Math.floor(Math.random() * chars.length)];
+                })
+                .join('');
+            
+            if (iterations >= original.length) {
+                clearInterval(interval);
+            }
+            
+            iterations += 1/3;
+        }, 30);
+    });
+}
+
+/* ============================================
+   INITIALIZE
    ============================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
     fetchGitHubRepos();
     initScrollAnimations();
+    
+    // Trigger glitch effect periodically
+    setTimeout(randomGlitch, 2000);
+    setInterval(randomGlitch, 10000);
 
-    // Navbar background on scroll
-    window.addEventListener('scroll', () => {
-        const navbar = document.querySelector('.navbar');
-        if (window.scrollY > 50) {
-            navbar.style.background = 'rgba(10, 14, 26, 0.98)';
-        } else {
-            navbar.style.background = 'rgba(10, 14, 26, 0.95)';
-        }
-    });
+    // Console easter egg
+    console.log('%c WELCOME TO THE MATRIX ', 'background: #000; color: #00ff41; font-size: 20px; font-weight: bold; padding: 10px;');
+    console.log('%c "Unfortunately, no one can be told what the Matrix is. You have to see it for yourself." ', 'color: #00ff41; font-style: italic;');
 });

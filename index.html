@@ -3,30 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>xerohour | AI Developer</title>
+    <title>xerohour | Follow the White Rabbit</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Animated Background -->
-    <canvas id="neural-network"></canvas>
+    <!-- Matrix Digital Rain Canvas -->
+    <canvas id="matrix-rain"></canvas>
     
+    <!-- Scanline Overlay -->
+    <div class="scanlines"></div>
+    
+    <!-- CRT Flicker Effect -->
+    <div class="crt-flicker"></div>
+
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <span class="brand-gradient">&lt;xerohour/&gt;</span>
+                <span class="brand-text">&lt;xerohour/&gt;</span>
+                <span class="brand-subtitle">System Operator</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects"><span class="matrix-prefix">></span> PROJECTS</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about"><span class="matrix-prefix">></span> ABOUT</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact"><span class="matrix-prefix">></span> CONTACT</a></li>
                 </ul>
             </div>
         </div>
@@ -38,49 +45,61 @@
             <div class="row align-items-center min-vh-100">
                 <div class="col-lg-8">
                     <div class="hero-content">
-                        <div class="badge ai-badge mb-3">
-                            <i class="fas fa-robot"></i> AI & Machine Learning Developer
+                        <div class="glitch-wrapper">
+                            <h1 class="display-2 glitch" data-text="WAKE UP, NEO...">
+                                WAKE UP, NEO...
+                            </h1>
                         </div>
-                        <h1 class="display-3 fw-bold mb-4">
-                            Building Intelligent 
-                            <span class="text-gradient">Systems</span>
-                        </h1>
-                        <p class="lead mb-4">
-                            Specializing in AI-powered applications, genome analysis, and autonomous agent systems. 
-                            Turning complex problems into elegant, intelligent solutions.
-                        </p>
-                        <div class="hero-cta">
-                            <a href="#projects" class="btn btn-primary btn-lg me-3">
-                                <i class="fas fa-code"></i> View Projects
+                        
+                        <div class="terminal-window mt-4">
+                            <div class="terminal-header">
+                                <span class="terminal-title">construct.exe</span>
+                                <div class="terminal-controls">
+                                    <span class="control min"></span>
+                                    <span class="control max"></span>
+                                    <span class="control close"></span>
+                                </div>
+                            </div>
+                            <div class="terminal-body" id="typing-terminal">
+                                <div class="typing-line">
+                                    <span class="prompt">root@construct:~$</span>
+                                    <span class="command" id="typewriter"></span>
+                                    <span class="cursor">█</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="hero-cta mt-5">
+                            <a href="#projects" class="btn btn-matrix btn-lg me-3">
+                                <i class="fas fa-terminal"></i> ENTER THE MATRIX
                             </a>
-                            <a href="https://github.com/xerohour" target="_blank" class="btn btn-outline-light btn-lg">
-                                <i class="fab fa-github"></i> GitHub
+                            <a href="https://github.com/xerohour" target="_blank" class="btn btn-outline-matrix btn-lg">
+                                <i class="fab fa-github"></i> GITHUB
                             </a>
+                        </div>
+
+                        <div class="matrix-quote mt-5">
+                            <p class="quote-text">"Unfortunately, no one can be told what the Matrix is. You have to see it for yourself."</p>
+                            <p class="quote-author">— Morpheus</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 d-none d-lg-block">
                     <div class="hero-graphic">
-                        <div class="code-window">
-                            <div class="window-header">
-                                <span class="dot red"></span>
-                                <span class="dot yellow"></span>
-                                <span class="dot green"></span>
+                        <div class="pill-container">
+                            <div class="pill blue">
+                                <div class="pill-glow"></div>
+                                <span class="pill-label">BLUE PILL</span>
+                                <span class="pill-desc">Stay in ignorance</span>
                             </div>
-                            <div class="window-body">
-                                <pre><code><span class="keyword">class</span> <span class="class-name">AIDeveloper</span>:
-    <span class="keyword">def</span> <span class="function">__init__</span>(self):
-        self.skills = [
-            <span class="string">"Machine Learning"</span>,
-            <span class="string">"Neural Networks"</span>,
-            <span class="string">"Genome Analysis"</span>,
-            <span class="string">"Autonomous Agents"</span>
-        ]
-    
-    <span class="keyword">def</span> <span class="function">build</span>(self, idea):
-        <span class="keyword">return</span> AIpowered(idea)</code></pre>
+                            <div class="vs-divider">VS</div>
+                            <div class="pill red">
+                                <div class="pill-glow"></div>
+                                <span class="pill-label">RED PILL</span>
+                                <span class="pill-desc">See the truth</span>
                             </div>
                         </div>
+                        <div class="choice-text">The choice is yours...</div>
                     </div>
                 </div>
             </div>
@@ -91,19 +110,23 @@
     <section id="projects" class="projects-section">
         <div class="container">
             <div class="section-header text-center mb-5">
-                <h2 class="display-5 fw-bold mb-3">
-                    <i class="fas fa-folder-open text-gradient"></i> AI Projects
+                <h2 class="display-5">
+                    <span class="matrix-bracket">[</span>
+                    <i class="fas fa-folder-open text-neon"></i>
+                    LOADED PROGRAMS
+                    <span class="matrix-bracket">]</span>
                 </h2>
-                <p class="lead text-muted">Open-source projects leveraging artificial intelligence</p>
+                <p class="lead text-muted">AI-powered constructs and neural interfaces</p>
+                <div class="divider-line"></div>
             </div>
             
             <div class="row g-4" id="projects-grid">
-                <!-- Projects will be loaded dynamically -->
+                <!-- Projects loaded via JS -->
             </div>
             
             <div class="text-center mt-5">
-                <a href="https://github.com/xerohour?tab=repositories" target="_blank" class="btn btn-outline-primary btn-lg">
-                    <i class="fab fa-github"></i> View All Repositories
+                <a href="https://github.com/xerohour?tab=repositories" target="_blank" class="btn btn-outline-matrix btn-lg">
+                    <i class="fas fa-database"></i> ACCESS MAINFRAME
                 </a>
             </div>
         </div>
@@ -115,38 +138,51 @@
             <div class="row align-items-center">
                 <div class="col-lg-6">
                     <div class="about-image">
-                        <div class="tech-stack-grid">
-                            <div class="tech-item"><i class="fab fa-python"></i><span>Python</span></div>
-                            <div class="tech-item"><i class="fab fa-js"></i><span>JavaScript</span></div>
-                            <div class="tech-item"><i class="fab fa-react"></i><span>React</span></div>
-                            <div class="tech-item"><i class="fas fa-brain"></i><span>TensorFlow</span></div>
-                            <div class="tech-item"><i class="fas fa-dna"></i><span>Bioinformatics</span></div>
-                            <div class="tech-item"><i class="fas fa-robot"></i><span>AI Agents</span></div>
+                        <div class="hologram-container">
+                            <div class="hologram-ring"></div>
+                            <div class="hologram-ring delay-1"></div>
+                            <div class="hologram-ring delay-2"></div>
+                            <div class="tech-hologram">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                        </div>
+                        <div class="tech-stack-grid mt-4">
+                            <div class="tech-item"><i class="fab fa-python"></i><span>PYTHON</span></div>
+                            <div class="tech-item"><i class="fab fa-js"></i><span>JAVASCRIPT</span></div>
+                            <div class="tech-item"><i class="fas fa-brain"></i><span>TENSORFLOW</span></div>
+                            <div class="tech-item"><i class="fas fa-dna"></i><span>BIOINFORMATICS</span></div>
+                            <div class="tech-item"><i class="fas fa-robot"></i><span>AI AGENTS</span></div>
+                            <div class="tech-item"><i class="fas fa-network-wired"></i><span>NEURAL NETS</span></div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="about-content">
-                        <h2 class="display-6 fw-bold mb-4">About Me</h2>
-                        <p class="lead">
-                            Passionate developer focused on building AI-powered systems that solve real-world problems.
-                        </p>
-                        <p>
-                            With expertise spanning machine learning, genome analysis, and autonomous agent systems, 
-                            I create tools that bridge the gap between complex data and actionable insights.
+                        <h2 class="display-6 mb-4">
+                            <span class="matrix-prefix">></span>
+                            SYSTEM OPERATOR PROFILE
+                        </h2>
+                        <div class="profile-terminal">
+                            <p class="terminal-line"><span class="label">IDENTITY:</span> xerohour</p>
+                            <p class="terminal-line"><span class="label">CLASS:</span> AI/ML Developer</p>
+                            <p class="terminal-line"><span class="label">STATUS:</span> <span class="status-online">ONLINE</span></p>
+                            <p class="terminal-line"><span class="label">MISSION:</span> Build intelligent systems</p>
+                        </div>
+                        <p class="lead mt-4">
+                            I build AI-powered systems that bridge the gap between complex data and actionable insights.
                         </p>
                         <div class="stats-row mt-4">
                             <div class="stat-item">
-                                <h3 class="stat-number">50+</h3>
-                                <p class="stat-label">GitHub Repositories</p>
+                                <h3 class="stat-number" id="repo-count">50+</h3>
+                                <p class="stat-label">CONSTRUCTS</p>
                             </div>
                             <div class="stat-item">
-                                <h3 class="stat-number">10+</h3>
-                                <p class="stat-label">AI Projects</p>
+                                <h3 class="stat-number" id="ai-count">10+</h3>
+                                <p class="stat-label">AI PROGRAMS</p>
                             </div>
                             <div class="stat-item">
                                 <h3 class="stat-number">∞</h3>
-                                <p class="stat-label">Curiosity</p>
+                                <p class="stat-label">POSSIBILITIES</p>
                             </div>
                         </div>
                     </div>
@@ -159,10 +195,14 @@
     <section id="contact" class="contact-section">
         <div class="container">
             <div class="section-header text-center mb-5">
-                <h2 class="display-5 fw-bold mb-3">
-                    <i class="fas fa-envelope text-gradient"></i> Get In Touch
+                <h2 class="display-5">
+                    <span class="matrix-bracket">[</span>
+                    <i class="fas fa-satellite-dish text-neon"></i>
+                    ESTABLISH CONNECTION
+                    <span class="matrix-bracket">]</span>
                 </h2>
-                <p class="lead text-muted">Let's build something amazing together</p>
+                <p class="lead text-muted">Secure transmission channel</p>
+                <div class="divider-line"></div>
             </div>
             
             <div class="row justify-content-center">
@@ -172,10 +212,12 @@
                             <div class="contact-icon">
                                 <i class="fas fa-envelope"></i>
                             </div>
-                            <h5>Email</h5>
+                            <h5>ENCRYPTED EMAIL</h5>
                             <div class="contact-image-container">
-                                <img src="contact-email.png" alt="Email contact" class="contact-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-                                <div class="contact-fallback" style="display:none">xerohour@gmail.com</div>
+                                <img src="contact-email.png" alt="Email contact" class="contact-image">
+                            </div>
+                            <div class="security-badge">
+                                <i class="fas fa-lock"></i> ENCRYPTED
                             </div>
                         </div>
                         
@@ -183,10 +225,12 @@
                             <div class="contact-icon">
                                 <i class="fas fa-phone"></i>
                             </div>
-                            <h5>Phone</h5>
+                            <h5>SECURE LINE</h5>
                             <div class="contact-image-container">
-                                <img src="contact-phone.png" alt="Phone contact" class="contact-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-                                <div class="contact-fallback" style="display:none">502-251-1337</div>
+                                <img src="contact-phone.png" alt="Phone contact" class="contact-image">
+                            </div>
+                            <div class="security-badge">
+                                <i class="fas fa-shield-alt"></i> SECURE
                             </div>
                         </div>
                         
@@ -194,17 +238,20 @@
                             <div class="contact-icon">
                                 <i class="fab fa-github"></i>
                             </div>
-                            <h5>GitHub</h5>
+                            <h5>MAINFRAME</h5>
                             <a href="https://github.com/xerohour" target="_blank" class="contact-link">
-                                github.com/xerohour
+                                <i class="fas fa-link"></i> github.com/xerohour
                             </a>
+                            <div class="security-badge">
+                                <i class="fas fa-globe"></i> PUBLIC ACCESS
+                            </div>
                         </div>
                     </div>
                     
                     <div class="contact-note text-center mt-5">
-                        <p class="text-muted">
-                            <i class="fas fa-shield-alt"></i> 
-                            Contact images are used to prevent automated spam scraping
+                        <p>
+                            <i class="fas fa-user-secret"></i> 
+                            CONTACT DATA ENCRYPTED TO PREVENT SENTINEL SCRAPING
                         </p>
                     </div>
                 </div>
@@ -217,12 +264,24 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <p>&copy; 2026 xerohour. All rights reserved.</p>
+                    <p class="footer-text">
+                        <span class="copyright">© 2026 xerohour</span>
+                        <span class="matrix-footer"> | SYSTEM OPERATOR</span>
+                    </p>
                 </div>
                 <div class="col-md-6 text-md-end">
                     <a href="https://github.com/xerohour" target="_blank" class="footer-link">
-                        <i class="fab fa-github"></i> GitHub
+                        <i class="fab fa-github"></i> GITHUB
                     </a>
+                    <span class="footer-divider">|</span>
+                    <a href="#" class="footer-link" onclick="scrollToTop(); return false;">
+                        <i class="fas fa-arrow-up"></i> TOP
+                    </a>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-12 text-center">
+                    <p class="neo-quote">"I know kung fu."</p>
                 </div>
             </div>
         </div>
