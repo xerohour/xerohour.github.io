@@ -52,6 +52,15 @@ This is my personal **GitHub Pages** portfolio featuring an authentic **Matrix-t
 
 ---
 
+
+## 🗂️ Project Atlas
+
+Explore the detailed project dashboard (TOC + plugin-style table + LaTeX JSON):
+
+- [**📚 Open PROJECTS_DASHBOARD.md**](./PROJECTS_DASHBOARD.md)
+
+---
+
 ## 🛠️ Tech Stack
 
 ```python
