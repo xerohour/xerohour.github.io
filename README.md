@@ -241,6 +241,13 @@ const protectionLayers = [
 
 </div>
 
+
+## 🧭 Project Dashboard
+
+Want a detailed, structured project index (including LaTeX-ready JSON + markdown plugin table)?
+
+➡️ **Open:** [`PROJECTS_DASHBOARD.md`](./PROJECTS_DASHBOARD.md)
+
 ---
 
 ## 📝 License
