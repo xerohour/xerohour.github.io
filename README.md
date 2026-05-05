@@ -40,6 +40,12 @@ This is my personal **GitHub Pages** portfolio featuring an authentic **Matrix-t
 
 ---
 
+## 🧭 Project Intelligence
+
+- **Project Knowledge Graph Dashboard:** [View `PROJECTS_DASHBOARD.md`](./PROJECTS_DASHBOARD.md)
+
+---
+
 ## 🚀 Quick Access
 
 | Section | URL | Description |
