@@ -40,6 +40,14 @@ This is my personal **GitHub Pages** portfolio featuring an authentic **Matrix-t
 
 ---
 
+## 🗂️ Project Dashboard
+
+Looking for a structured inventory of every project folder and README-derived metadata?
+
+➡️ **[Open the Project Portfolio Dashboard](./PROJECTS_DASHBOARD.md)**
+
+---
+
 ## 🚀 Quick Access
 
 | Section | URL | Description |
